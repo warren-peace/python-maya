@@ -15,3 +15,18 @@ Color Codes:
 	PINK: Joints that may be misplaced based on REFERENCE
 	BLUE: Extra joints in the second skeleton
 '''
+
+# main part
+compareJoints():
+	# list selected joints
+	selected = mc.ls(sl=True,long=True)
+
+	# deselect everything and just select the first joint
+	mc.select(clear=True)
+	mc.select(selected[0],add=True)
+
+	# select every joint descendant
+	l2 = mc.listRelatives(allDescendents=True, type='joint',f=True)
+
+# call main
+compareJoints()
