@@ -16,6 +16,17 @@ Color Codes:
 	BLUE: Extra joints in the second skeleton
 '''
 
+# remove the namespace of the joint and its children 
+
+def cleanUp(listahan, the_namespace): 
+	# removes the namespace from the list
+	counter = 0
+	for x in listahan:
+		tempo = x.replace(the_namespace+':', '|')
+		listahan[counter] = tempo
+		counter+=1
+	return # does not have to return anything because the list is the same ref
+
 # main part
 compareJoints():
 	# list selected joints
@@ -27,6 +38,8 @@ compareJoints():
 
 	# select every joint descendant
 	l2 = mc.listRelatives(allDescendents=True, type='joint',f=True)
+
+	cleanUp(l1, l1_ns) 
 
 # call main
 compareJoints()
